@@ -1,4 +1,4 @@
-#ASSESSMENT 1 - JS PROOF
+//ASSESSMENT 1 - JS PROOF
 
 let nftCount = 0;
 const nfts = [];
