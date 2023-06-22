@@ -1,0 +1,45 @@
+# MyToken Contract
+
+This Solidity smart contract implements the MyToken ERC20 token. It allows for minting and burning tokens, as well as tracking token balances for different addresses.
+
+## Contract Details
+
+- Token Name: SetKal
+- Token Abbreviation: KAL
+- Total Supply: 0
+
+## Public Variables
+
+- `tokenName`: The name of the token.
+- `tokenAbbvr`: The abbreviation of the token.
+- `totalSupply`: The total supply of the token.
+
+## Mapping
+
+- `tokenHolders`: A mapping of addresses to token balances. It stores the token balance for each address.
+
+## Functions
+
+### Mint
+
+The `mint` function allows for the creation of new tokens. It takes two parameters:
+
+- `_address`: The address to which the tokens will be minted.
+- `_value`: The number of tokens to mint.
+
+The function increases the total supply of the token by `_value` and updates the token balance of the specified address.
+
+### Burn
+
+The `burn` function allows for the burning (destruction) of tokens. It takes two parameters:
+
+- `_address`: The address from which the tokens will be burned.
+- `_value`: The number of tokens to burn.
+
+The function checks if the balance of the specified address is greater than `_value`. If so, it deducts `_value` from the total supply and updates the token balance of the address by subtracting `_value`.
+
+Please note that this ABOUT provides a high-level overview of the contract and its functionalities. For more detailed information, refer to the contract source code.
+
+## License
+
+This contract is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
