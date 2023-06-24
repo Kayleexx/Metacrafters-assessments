@@ -49,7 +49,7 @@ contract StudentContract {
 
 /*Explanation: The contract defines a data structure called Student that represents the information associated with each student. It consists of two fields: name (a string) and age (an unsigned integer).
 
-Using the functions provided by the contract, the admin can add a new student by providing their address, name, and age. The admin can also retrieve a student's data by specifying the student's address. Additionally, the admin can update a student's age or delete a student's record from the contract.
+Using the functions provided by the contract, the admin can add a new student by providing their address, name, and age. The admin can also retrieve a student's data by specifying the student's address. Additionally, the admind can update a student's age or delete a student's record from the contract.
 
 The contract utilizes a mapping to associate each student's address with their corresponding Student struct, allowing efficient storage and retrieval of student data.
 
