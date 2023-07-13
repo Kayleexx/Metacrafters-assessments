@@ -1,4 +1,4 @@
-# DegenToken
+# DegenToken Project
 
 DegenToken is an ERC20 token contract deployed on the Avalanche network. It provides a basic implementation of an ERC20 token with additional functionality for minting, transferring, redeeming, and burning tokens.
 
