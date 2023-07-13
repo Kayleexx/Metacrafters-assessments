@@ -12,14 +12,10 @@ DegenToken is an ERC20 token contract deployed on the Avalanche network. It prov
 
 ## Installation
 
-1. Clone the repository:
+1. Install the required dependencies:
 
-```bash
-git clone https://github.com/your-username/DegenToken.git
-
-2. Install the required dependencies:
-```bash
-npm Install
+   ```bash
+    npm Install
 
 ## Usage
 
