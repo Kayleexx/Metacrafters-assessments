@@ -4,7 +4,7 @@ This repository contains my completed assignments for the MetaCrafters course. E
 
 ## Table of Contents
 
-- Assessment 1: - JS-PROOF
+- Assessment 1: - JS-PROOF - Beginner level
 - Assessment 2: - ETH PROOF - Beginner Level 
 - Assessment 3: - ETH + AVAX PROOF - Intermediate Level
 - Assessment 4: - POLY PROOF - Advanced Level
