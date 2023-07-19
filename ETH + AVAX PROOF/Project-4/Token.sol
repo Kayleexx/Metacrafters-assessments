@@ -1,38 +1,54 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.3.0/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract DegenToken is ERC20 {
-    address private owner;
+contract DegenGamingToken is ERC20, Ownable {
+    // Mapping to store the in-game store items and their costs in tokens
+    mapping(string => uint256) private _itemPrices;
 
-    constructor() ERC20("Degen Token", "DEGEN") {
-        owner = msg.sender;
+    event ItemRedeemed(address indexed player, string item);
+
+    constructor() ERC20("Degen Gaming Token", "DGT") {
+        // Mint initial supply to the contract deployer (owner)
+        _mint(msg.sender, 1000000 * 10**decimals());
     }
 
-    modifier onlyOwner() {
-        require(msg.sender == owner, "Only the owner can perform this action");
-        _;
-    }
-
+    // Function to mint new tokens (only the owner can do this)
     function mint(address account, uint256 amount) public onlyOwner {
         _mint(account, amount);
+        emit Transfer(address(0), account, amount);
     }
 
-    function transfer(address recipient, uint256 amount) public override returns (bool) {
-        _transfer(_msgSender(), recipient, amount);
-        return true;
+    // Function to redeem tokens for items in the in-game store
+    function redeem(string memory item) public {
+        require(_itemPrices[item] > 0, "Item not available for redemption");
+        require(balanceOf(msg.sender) >= _itemPrices[item], "Insufficient balance");
+
+        // Perform the redemption (in this example, transfer the tokens to the contract owner)
+        _transfer(msg.sender, owner(), _itemPrices[item]);
+
+        emit ItemRedeemed(msg.sender, item);
     }
 
-    function redeem(uint256 amount) public {
-        _burn(msg.sender, amount);
+    // Function to add items and their prices to the in-game store
+    function addItemToStore(string memory item, uint256 price) public onlyOwner {
+        require(price > 0, "Price must be greater than zero");
+        _itemPrices[item] = price;
     }
 
-    function balanceOf(address account) public view override returns (uint256) {
-        return super.balanceOf(account);
+    // Function to check the price of an item in the in-game store
+    function getItemPrice(string memory item) public view returns (uint256) {
+        return _itemPrices[item];
     }
 
+    // Function to burn tokens (anyone can do this)
     function burn(uint256 amount) public {
+        require(amount > 0, "Amount must be greater than zero");
+        require(balanceOf(msg.sender) >= amount, "Insufficient balance");
+
         _burn(msg.sender, amount);
     }
 }
+
